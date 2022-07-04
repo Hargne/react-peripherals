@@ -16,8 +16,15 @@ import { DrawerProps } from "./Drawer.types";
 const Drawer: React.FC<{
   data: DrawerProps;
   isOpen: boolean;
-  onClose: (id: DrawerProps["id"]) => void;
+  onClose: () => void;
 }> = (props) => {
+  const renderContent = () => {
+    if (typeof props.data.content === "string") {
+      return <Typography variant="body1">{props.data.content}</Typography>;
+    }
+    return props.data.content;
+  };
+
   return (
     <MUIDrawer
       anchor={props.data.anchor || "left"}
@@ -25,7 +32,7 @@ const Drawer: React.FC<{
         style: { maxWidth: props.data.width || "40rem", width: "100%" },
       }}
       open={props.isOpen}
-      onClose={() => props.onClose(props.data.id)}
+      onClose={props.onClose}
     >
       {props.data.title && (
         <AppBar
@@ -43,7 +50,7 @@ const Drawer: React.FC<{
               <IconButton
                 aria-label="Close Drawer"
                 size="small"
-                onClick={() => props.onClose(props.data.id)}
+                onClick={props.onClose}
               >
                 <CloseIcon />
               </IconButton>
@@ -60,7 +67,7 @@ const Drawer: React.FC<{
           backgroundColor: props.data.contentBackgroundColor || "inherit",
         }}
       >
-        {props.data.content}
+        {renderContent()}
       </Box>
     </MUIDrawer>
   );

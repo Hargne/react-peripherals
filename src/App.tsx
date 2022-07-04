@@ -1,9 +1,13 @@
-import { useState } from "react";
+import React from "react";
+import Peripherals from "~/Peripherals/Peripherals";
+import TestComponent from "./TestComponent";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div>Hej</div>;
+  return (
+    <Peripherals>
+      <TestComponent />
+    </Peripherals>
+  );
 }
 
 export default App;
