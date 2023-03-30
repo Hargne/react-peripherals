@@ -1,24 +1,26 @@
 import React from "react";
 import {
+  Queue,
   QueueProps,
   QueueItemProps,
   QueueItemState,
   QueueItemDataProps,
 } from "./useQueue.types";
 
-export function useQueue<T>(props?: QueueProps) {
+export function useQueue<T>(props?: QueueProps): Queue<T> {
   const {
     order = "newest-first",
     transitionDelay = 300,
     stackable = false,
   } = props || {};
   const [queue, setQueue] = React.useState<QueueItemProps<T>[]>([]);
-  const queueRef = React.useRef(queue);
-  // Store the state in a ref to keep it consistent between function calls
-  // https://stackoverflow.com/questions/57847594/react-hooks-accessing-up-to-date-state-from-within-a-callback
-  queueRef.current = queue;
-
   const [itemInFocus, setItemInFocus] = React.useState<QueueItemProps<T>>();
+  // Store the states in refs to keep them consistent between function calls
+  // https://stackoverflow.com/questions/57847594/react-hooks-accessing-up-to-date-state-from-within-a-callback
+  const queueRef = React.useRef(queue);
+  queueRef.current = queue;
+  const itemInFocusRef = React.useRef(itemInFocus);
+  itemInFocusRef.current = itemInFocus;
 
   const generateRandomId = () => "_" + new Date().getTime();
 
@@ -45,6 +47,7 @@ export function useQueue<T>(props?: QueueProps) {
         id,
         state: "queued",
         data: data || ({} as T),
+        closeAfter: data?.closeAfter,
       };
       setQueue(
         queueRef.current
@@ -71,7 +74,7 @@ export function useQueue<T>(props?: QueueProps) {
 
   const close = React.useCallback(
     (id?: QueueItemProps<T>["id"]) => {
-      const idOfItemToBeClosed = id || itemInFocus?.id;
+      const idOfItemToBeClosed = id || itemInFocusRef.current?.id;
       if (idOfItemToBeClosed) {
         // Alow to transition out before actually removing the item from the list
         updateState(idOfItemToBeClosed, "transitioning_out");
@@ -86,7 +89,7 @@ export function useQueue<T>(props?: QueueProps) {
       order === "oldest-first"
         ? queueRef.current[0]
         : queueRef.current[queueRef.current.length - 1];
-    if (nextActiveItem && itemInFocus?.id !== nextActiveItem.id) {
+    if (nextActiveItem && itemInFocusRef.current?.id !== nextActiveItem.id) {
       updateState(nextActiveItem["id"], "active");
       setItemInFocus(nextActiveItem);
       if (nextActiveItem.closeAfter) {
@@ -103,11 +106,3 @@ export function useQueue<T>(props?: QueueProps) {
   };
 }
 export default useQueue;
-
-// Helper class to retreive the ReturnType of a generic function
-// https://stackoverflow.com/a/64919133
-export class UseQueueReturnType<T> {
-  return(e: T) {
-    return useQueue<T>(e);
-  }
-}

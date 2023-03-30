@@ -9,9 +9,8 @@ const Notification: React.FC<{
   data: NotificationProps;
   onClose: () => void;
   isOpen: boolean;
-  closable: boolean;
 }> = (props) => {
-  const isClosable = Boolean(props.closable || props.data.closable);
+  const isClosable = Boolean(props.data.closable);
 
   return (
     <Snackbar
