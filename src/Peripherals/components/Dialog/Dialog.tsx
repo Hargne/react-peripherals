@@ -80,8 +80,8 @@ const Dialog: React.FC<{
           {props.data.secondaryButton && (
             <Button
               onClick={handleButtonClick(props.data.secondaryButton)}
-              color={props.data.secondaryButton.color || "inherit"}
-              size={props.data.secondaryButton.size || "large"}
+              color={props.data.secondaryButton.color ?? "inherit"}
+              size={props.data.secondaryButton.size ?? "large"}
             >
               {props.data.secondaryButton.label}
             </Button>
@@ -89,8 +89,8 @@ const Dialog: React.FC<{
           {props.data.primaryButton && (
             <Button
               onClick={handleButtonClick(props.data.primaryButton)}
-              color={props.data.primaryButton.color || "primary"}
-              size={props.data.primaryButton.size || "large"}
+              color={props.data.primaryButton.color ?? "primary"}
+              size={props.data.primaryButton.size ?? "large"}
             >
               {props.data.primaryButton.label}
             </Button>

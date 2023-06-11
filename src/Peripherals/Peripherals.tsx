@@ -79,7 +79,7 @@ const Peripherals: React.FC<{ children: React.ReactNode }> = (props) => {
           key={`peripherals-drawer-${item.id}`}
           data={{
             ...item.data,
-            width: item.data.width || 1024 - i * 64,
+            width: item.data.width ?? 1024 - i * 64,
           }}
           onClose={() => drawerQueue.close(item.id)}
           isOpen={drawerQueue.activeItems

@@ -12,7 +12,7 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
     order = "newest-first",
     transitionDelay = 300,
     stackable = false,
-  } = props || {};
+  } = props ?? {};
   const [queue, setQueue] = React.useState<QueueItemProps<T>[]>([]);
   const [itemInFocus, setItemInFocus] = React.useState<QueueItemProps<T>>();
   // Store the states in refs to keep them consistent between function calls
@@ -42,11 +42,11 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
 
   const open = React.useCallback(
     (data?: T & QueueItemDataProps): QueueItemProps<T>["id"] => {
-      const id = data?.id || generateRandomId();
+      const id = data?.id ?? generateRandomId();
       const newQueueItem: QueueItemProps<T> = {
         id,
         state: "queued",
-        data: data || ({} as T),
+        data: data ?? ({} as T),
         closeAfter: data?.closeAfter,
       };
       setQueue(
@@ -74,7 +74,7 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
 
   const close = React.useCallback(
     (id?: QueueItemProps<T>["id"]) => {
-      const idOfItemToBeClosed = id || itemInFocusRef.current?.id;
+      const idOfItemToBeClosed = id ?? itemInFocusRef.current?.id;
       if (idOfItemToBeClosed) {
         // Alow to transition out before actually removing the item from the list
         updateState(idOfItemToBeClosed, "transitioning_out");

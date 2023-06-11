@@ -27,9 +27,9 @@ const Drawer: React.FC<{
 
   return (
     <MUIDrawer
-      anchor={props.data.anchor || "left"}
+      anchor={props.data.anchor ?? "left"}
       PaperProps={{
-        style: { maxWidth: props.data.width || "40rem", width: "100%" },
+        style: { maxWidth: props.data.width ?? "40rem", width: "100%" },
       }}
       open={props.isOpen}
       onClose={props.onClose}
@@ -64,7 +64,7 @@ const Drawer: React.FC<{
         paddingTop={1}
         paddingBottom={3}
         sx={{
-          backgroundColor: props.data.contentBackgroundColor || "inherit",
+          backgroundColor: props.data.contentBackgroundColor ?? "inherit",
         }}
       >
         {renderContent()}

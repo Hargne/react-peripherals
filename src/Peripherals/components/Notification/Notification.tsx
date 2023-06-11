@@ -16,8 +16,8 @@ const Notification: React.FC<{
     <Snackbar
       open={props.isOpen}
       anchorOrigin={{
-        vertical: props.data.position?.vertical || "bottom",
-        horizontal: props.data.position?.horizontal || "center",
+        vertical: props.data.position?.vertical ?? "bottom",
+        horizontal: props.data.position?.horizontal ?? "center",
       }}
       TransitionComponent={transitionWrapper(props.data.transition)}
     >
