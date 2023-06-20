@@ -16,7 +16,6 @@ export const PeripheralsContext = React.createContext(
 );
 
 const Peripherals: React.FC<{ children: React.ReactNode }> = (props) => {
-  //const queueList = props.components.map(({ component, ...queueProps }) => useQueue<typeof component>(queueProps))
   const loadingQueue = useQueue<LoadingProps>({
     order: "newest-first",
   });
@@ -32,7 +31,7 @@ const Peripherals: React.FC<{ children: React.ReactNode }> = (props) => {
     stackable: true,
   });
 
-  const periferals = React.useMemo<PeripheralsContextProps>(
+  const peripherals = React.useMemo<PeripheralsContextProps>(
     () => ({
       loading: loadingQueue,
       dialog: dialogQueue,
@@ -43,7 +42,7 @@ const Peripherals: React.FC<{ children: React.ReactNode }> = (props) => {
   );
 
   return (
-    <PeripheralsContext.Provider value={periferals}>
+    <PeripheralsContext.Provider value={peripherals}>
       {loadingQueue.queue.map((item) => (
         <Loading
           key={`peripherals-loading-${item.id}`}
