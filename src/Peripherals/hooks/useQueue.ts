@@ -1,10 +1,10 @@
 import React from "react";
 import {
   Queue,
-  QueueProps,
+  QueueItemDataProps,
   QueueItemProps,
   QueueItemState,
-  QueueItemDataProps,
+  QueueProps,
 } from "./useQueue.types";
 
 export function useQueue<T>(props?: QueueProps): Queue<T> {
@@ -84,6 +84,12 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
     [updateState, itemInFocus, transitionDelay, pop]
   );
 
+  const isItemOpen = React.useCallback(
+    (id: QueueItemProps<T>["id"]) =>
+      queueRef.current.some((item) => item.id === id),
+    []
+  );
+
   React.useEffect(() => {
     const nextActiveItem =
       order === "oldest-first"
@@ -103,6 +109,7 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
     close,
     queue,
     activeItems: queue.filter((i) => i.state === "active"),
+    isItemOpen,
   };
 }
 export default useQueue;

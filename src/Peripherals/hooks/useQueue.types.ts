@@ -5,6 +5,7 @@ export interface Queue<T> {
   close: (id?: QueueItemProps<T>["id"]) => void;
   queue: QueueItemProps<T>[];
   activeItems: QueueItemProps<T>[];
+  isItemOpen: (id: QueueItemProps<T>["id"]) => boolean;
 }
 export interface QueueProps {
   transitionDelay?: number;

@@ -1,6 +1,4 @@
-import { PeripheralComponentProps } from "../../Peripherals.types";
-
-export interface DrawerProps extends PeripheralComponentProps {
+export interface DrawerProps {
   title?: string;
   width?: string | number;
   anchor?: "left" | "right" | "top" | "bottom";

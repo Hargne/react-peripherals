@@ -1,6 +1,7 @@
-import React from "react";
+// A helper component for Material UI's TransitionComponent prop.
 import { Fade, Slide, Zoom } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
+import React from "react";
 
 export type TransitionType = "slide" | "fade" | "zoom";
 
