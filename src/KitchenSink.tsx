@@ -2,7 +2,7 @@ import React from "react";
 
 import { PeripheralsContext } from "./Peripherals/Peripherals";
 
-const TestComponent: React.FC = (props) => {
+const KitchenSink: React.FC = (props) => {
   const peripherals = React.useContext(PeripheralsContext);
 
   const openDialog = () => {
@@ -37,8 +37,8 @@ const TestComponent: React.FC = (props) => {
 
   const openDrawer = () => {
     peripherals.drawer.open({
-      title: "Hej",
-      content: "Där!",
+      title: "Some Title",
+      content: "This is some content for testing!",
     });
   };
 
@@ -84,4 +84,4 @@ const TestComponent: React.FC = (props) => {
   );
 };
 
-export default TestComponent;
+export default KitchenSink;

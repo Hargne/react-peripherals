@@ -86,7 +86,9 @@ export function useQueue<T>(props?: QueueProps): Queue<T> {
 
   const isItemOpen = React.useCallback(
     (id: QueueItemProps<T>["id"]) =>
-      queueRef.current.some((item) => item.id === id),
+      queueRef.current.some(
+        (item) => item.id === id && item.state === "active"
+      ),
     []
   );
 

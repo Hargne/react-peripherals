@@ -4,13 +4,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import {
   AppBar,
   Box,
-  colors,
-  Drawer as MUIDrawer,
   Grid,
   IconButton,
+  Drawer as MUIDrawer,
   Typography,
 } from "@mui/material";
-
 import { DrawerProps } from "./Drawer.types";
 
 const Drawer: React.FC<{
@@ -37,7 +35,10 @@ const Drawer: React.FC<{
       {props.data.title && (
         <AppBar
           position="sticky"
-          sx={{ zIndex: 1500, backgroundColor: colors.common.white }}
+          sx={{
+            zIndex: 1500,
+            backgroundColor: props.data.contentBackgroundColor ?? "inherit",
+          }}
           elevation={0}
         >
           <Grid container spacing={1} sx={{ p: 2 }} alignItems="center">

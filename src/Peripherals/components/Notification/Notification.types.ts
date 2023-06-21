@@ -1,4 +1,4 @@
-import { TransitionType } from "../transitionWrapper";
+import { TransitionType } from "../transitionWrapper.types";
 
 export type NotificationType = "success" | "info" | "error" | "warning";
 export interface NotificationProps {

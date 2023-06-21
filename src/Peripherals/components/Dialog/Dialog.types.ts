@@ -1,6 +1,5 @@
 import { ButtonProps } from "@mui/material";
-
-import { TransitionType } from "../transitionWrapper";
+import { TransitionType } from "../transitionWrapper.types";
 
 export interface DialogButtonProps {
   label: string;

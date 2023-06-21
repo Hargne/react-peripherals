@@ -2,8 +2,7 @@
 import { Fade, Slide, Zoom } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
-
-export type TransitionType = "slide" | "fade" | "zoom";
+import { TransitionType } from "./transitionWrapper.types";
 
 const SlideComponent = React.forwardRef(function Transition(
   props: TransitionProps & { children: React.ReactElement<any, any> },

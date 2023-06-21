@@ -1,18 +1,15 @@
 import React from "react";
 
+import { PeripheralsContextProps, PeripheralsProps } from "./Peripherals.types";
 import Dialog from "./components/Dialog/Dialog";
+import { DialogProps } from "./components/Dialog/Dialog.types";
 import Drawer from "./components/Drawer/Drawer";
+import { DrawerProps } from "./components/Drawer/Drawer.types";
 import Loading from "./components/Loading/Loading";
+import { LoadingProps } from "./components/Loading/Loading.types";
 import Notification from "./components/Notification/Notification";
+import { NotificationProps } from "./components/Notification/Notification.types";
 import useQueue from "./hooks/useQueue";
-import {
-  DialogProps,
-  DrawerProps,
-  LoadingProps,
-  NotificationProps,
-  PeripheralsContextProps,
-  PeripheralsProps,
-} from "./Peripherals.types";
 
 export const PeripheralsContext = React.createContext(
   {} as PeripheralsContextProps

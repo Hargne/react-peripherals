@@ -8,7 +8,7 @@ import {
 import "@testing-library/jest-dom";
 
 import Peripherals, { PeripheralsContext } from "./Peripherals";
-import { LoadingProps } from "./Peripherals.types";
+import { LoadingProps } from "./components/Loading/Loading.types";
 
 describe("Peripherals", () => {
   it("should be able to render custom components", async () => {

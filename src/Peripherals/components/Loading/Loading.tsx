@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-
 import { LoadingProps } from "./Loading.types";
 
 const Loading: React.FC<{
