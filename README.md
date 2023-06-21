@@ -1,2 +1,3 @@
 # react-peripherals
- App peripheral manager
+
+React app peripheral component manager
