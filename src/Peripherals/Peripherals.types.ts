@@ -9,7 +9,7 @@ export interface PeripheralsContextProps {
 }
 
 export interface PeripheralsProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   components?: {
     [key in keyof PeripheralsContextProps]?: React.ComponentType<any>;
   };

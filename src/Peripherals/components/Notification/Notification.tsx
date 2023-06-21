@@ -24,6 +24,7 @@ const Notification: React.FC<{
       <Alert
         severity={props.data.type}
         onClose={isClosable ? props.onClose : undefined}
+        closeText="Close Notification"
       >
         {props.data.title && <AlertTitle>{props.data.title}</AlertTitle>}
         {props.data.message}
